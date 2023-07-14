@@ -80,6 +80,10 @@ const itemsReducer = (state = initialState, action) => {
       delete newState[action.itemId];
       return newState;
     case ADD_ITEM:
+      return {
+        ...state,
+        [action.item.id]: action.item
+      };
     case UPDATE_ITEM: 
       return {
         ...state,

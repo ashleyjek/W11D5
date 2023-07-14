@@ -38,7 +38,6 @@ const PokemonDetail = () => {
   } else if (showEditPokeForm && pokemon.captured) {
     content = (
       <EditPokemonForm 
-        pokemon={pokemon} 
         hideForm={() => setShowEditPokeForm(false)} 
       />
     );

@@ -2,12 +2,12 @@ import { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
 import { createItem } from '../store/items';
-import { useHistory, useParams } from 'react-router-dom/cjs/react-router-dom.min';
+import { useParams } from 'react-router-dom/cjs/react-router-dom.min';
 
-const CreateItemForm = ({ hideForm}) => {
+const CreateItemForm = ({ hideForm }) => {
     const dispatch = useDispatch();
     const { pokemonId } = useParams();
-  
+    
     const [happiness, setHappiness] = useState('');
     const [price, setPrice] = useState('');
     const [name, setName] = useState('');
@@ -15,8 +15,6 @@ const CreateItemForm = ({ hideForm}) => {
     const updateName = (e) => setName(e.target.value);
     const updateHappiness = (e) => setHappiness(e.target.value);
     const updatePrice = (e) => setPrice(e.target.value);
-
-    const history = useHistory();
   
     const handleSubmit = async (e) => {
       e.preventDefault();
@@ -29,7 +27,6 @@ const CreateItemForm = ({ hideForm}) => {
       
       let createdItem = dispatch(createItem(pokemonId, payload));
       if (createdItem) {
-        history.push(`/pokemon/items`);
         hideForm();
       }
     };
